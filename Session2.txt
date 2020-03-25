@@ -1,0 +1,74 @@
+﻿Wanja Mascarenhas – 101280022
+
+/* 
+Exercise 1: 
+Using ES6 syntax, write a function that will get the difference between a given number and 13, if the number is greater than 13 return double the absolute difference
+*/
+ 
+function difference(number) {
+   return (number > 13 ? `${2*(number-13)}` : `${Math.abs(number - 13)}`);
+}
+console.log(difference(32));
+console.log(difference(11));
+
+
+/* 
+Exercise 2: 
+Rewrite the following code block using ES6 syntax, ie. const, let, arrow function, template literals and for..of
+*/
+ 
+let gretter = (myArray) => {
+  const greetText = 'Hello';
+  for(let index = 0 ; index < myArray.length; index++) { 
+    console.log(greetText.concat(' ', myArray[index]));
+  }
+}
+
+gretter(['Randy Savage', 'Ric Flair', 'Hulk Hogan']);
+
+
+/* 
+Exercise 3: 
+Using array.proto.map create function to use the capitalize method in Exercise 2 to upper case the first character of each Color in the following array..
+*/
+let capitalizedColors = () => {
+  const colors = ["red", "gree", "blue"];
+  return result = colors.map(color => color.charAt(0).toUpperCase() + color.substring(1));
+  
+}
+
+console.log(capitalizedColors())
+
+/*
+Exercise 4: Using array.proto.filter create a function that will filter out all the values of the array that are less than twenty
+*/
+let filterLessThan20 = () => {
+  var values = [1, 60, 34, 30, 20, 5];
+
+  return result = values.filter( values => values < 20);
+  
+}
+console.log(filterLessThan20());
+
+
+/*
+Challenge: Using array.proto.reduce create calculate the sum and product of a given array.
+
+*/
+let calculateSum = () => {
+var array = [1, 2, 3, 4 ] 
+const sum = (acum, value) => acum + value;
+return array.reduce(sum);
+}
+
+let calculateProduct = () => {
+var array = [1, 2, 3, 4 ] 
+const prod = (acum, value) => acum * value;
+return array.reduce(prod);
+}
+console.log(calculateSum());
+console.log(calculateProduct());
+
+
+
+
