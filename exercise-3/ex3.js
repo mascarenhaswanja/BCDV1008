@@ -18,6 +18,5 @@ say.speak( 'Good night', 0.5, (err) => {
 	}
 	console.log('')
 });
- 
-const  sorryDave = () => say.speak("I’m sorry, Dave");
-setTimeout(sorryDave, 0.5);
+
+setTimeout(() => say.speak("I'm sorry, Dave"), 5000);
