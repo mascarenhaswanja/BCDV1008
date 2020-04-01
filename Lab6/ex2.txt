@@ -1,0 +1,52 @@
+//Exercise 2.1: Query
+db.getCollection("Restaurants").find(
+    { 
+        "cuisine" : "Japanese"
+    }
+);
+
+//Exercise 2.2: Projections
+db.getCollection("Restaurants").find(
+    { 
+        "cuisine" : "Japanese"
+    }, 
+    { 
+        "cuisine" : 1, 
+        "name" : 1
+    }
+);
+
+//Exercise 2.3: Sort
+db.getCollection("Restaurants").find(
+    { 
+        "cuisine" : "Japanese"
+    }, 
+    { 
+        "cuisine" : 1, 
+        "name" : 1
+    }
+).sort(
+    { 
+        "name" : -1
+    }
+);
+
+//Exercise 2.4: Filter
+db.getCollection("Restaurants").find(
+    { 
+        "cuisine" : { "$eq" : "Japanese" }
+    }, 
+    { 
+        "_id" : 1, 
+        "cuisine" : 1, 
+        "name" : 1, 
+        "city" : 1, 
+        "restaurant_id" : 1
+    }
+).sort(
+    { 
+        "restaurant_id" : 1.0
+    }
+);
+
+ 

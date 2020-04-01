@@ -1,0 +1,34 @@
+// Exercise 3.1 Query $eq
+db.getCollection("Restaurants").find(
+    { 
+        "cuisine" : { "$eq" : "Delicatessen"
+    }, 
+    { 
+        "_id" : 0,
+        "cuisine" : 1, 
+        "name" : 1, 
+        "city" : 1
+    }
+).sort(
+    { 
+        "name" : -1
+    }
+);
+
+//  Exercise 3.2 Query $eq, $neq
+db.getCollection("Restaurants").find(
+    { 
+        "$and" : [ {"cuisine" : {"$eq": "Delicatessen"}}, 
+            { "city" : { "$ne" : "Brooklin" }}
+        ]
+    }, 
+    { 
+        "cuisine" : 1, 
+        "name" : 1, 
+        "city" : 1
+    }
+).sort(
+    { 
+        "name" : 1
+    }
+);
