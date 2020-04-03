@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+  <script>
+    
+    var socket;  // global variable
+
+    $(document).ready(function() {
+      console.log("Ready!");
+
+      // Make connection
+      socket = io.connect('http://localhost:3000');
+
+      // event listeners from server
+      socket.on('connect', function(){
+        console.log('server connected');
+      });
+
+      socket.on('disconnect', function(){
+        console.log('server disconnected');
+      });
+
+      socket.on('restaurants-data',(data) => {
+        console.log('restaurants data received from server');
+        data.forEach(rest => console.log(rest));
+      });
+
+      socket.on('order-data',(data) => {
+        console.log('orders data received from server');
+        data.forEach(order => console.log(order));
+      });
+    
+      socket.on('order-data-added',(data) => {
+        console.log(`order data add by server ${data}`);
+      });
+    });
+    //client
+    const connect = () => socket.connect();
+    const disconnect = () => socket.disconnect();
+    const getRestaurants = () => socket.emit('get-restaurants');
+    const getOrders = () => {
+      alert('Get Orders');
+      socket.emit('get-orders'); 
+    }
+    const createOrder = () => {
+      alert('Place Order');
+      socket.emit('add-order');
+    }
+   </script>
+  <h1>Restaurant Orders</h1>
+  <button id='connect' onClick='connect()'>Connect</button>
+  <button id='disconnect' onClick='disconnect()'>Disconnect</button>
+  <br><br>
+  <button id='getRestaurants' onClick='getRestaurants()'>Get Restaurants</button>
+  <button id='getOrders' onClick='getOrders()'>Get Orders</button>
+  <button id='createOrder' onClick='createOrder()'>Place Order</button>
+</body>
+</html>
